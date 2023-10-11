@@ -109,10 +109,10 @@ class AutoRun:
         boy.frame = (boy.frame + 1) % 8
         boy.x += boy.dir * (5 + speed)
 
-        if boy.x + 50 + (size / 2) > 770:
+        if boy.x + 50 + (size / 2) > 810:
             boy.action = 0
             boy.dir = -1
-        elif boy.x - 50 - (size / 2) < 30:
+        elif boy.x - 50 - (size / 2) < -10:
             boy.action = 1
             boy.dir = 1
         if get_time() - boy.idle_start_time > 5:
