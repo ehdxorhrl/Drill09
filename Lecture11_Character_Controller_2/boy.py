@@ -98,13 +98,13 @@ class AutoRun:
 
     @staticmethod
     def exit(boy, e):
-        pass
+        boy.y = 90
 
     @staticmethod
     def do(boy):
         global size, speed
-        speed += (get_time() - boy.AutoRun_start_time) / 10
-        size += (get_time() - boy.AutoRun_start_time) / 6
+        speed = 5
+        size = 100
         boy.y = size / 3 + 90
         boy.frame = (boy.frame + 1) % 8
         boy.x += boy.dir * (5 + speed)
@@ -158,7 +158,7 @@ class StateMachine:
             Sleep: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, space_down: Idle},
             Idle: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, time_out: Sleep, press_a: AutoRun},
             Run: {right_down: Idle, left_down: Idle, right_up: Idle, left_up: Idle},
-            AutoRun: {press_a: Idle, time_out: Idle}
+            AutoRun: {press_a: Idle, time_out: Idle, right_down: Run, left_down: Run, right_up: Run, left_up: Run}
         }
 
     def handle_event(self, e):
